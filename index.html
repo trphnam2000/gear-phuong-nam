@@ -75,5 +75,57 @@
   </main>
   <footer><div class="wrap footer-row"><span>© <span id="year">2026</span> <b>GEAR PHƯƠNG NAM</b>. All rights reserved.</span><span>PC • LINH KIỆN • THIẾT BỊ CÔNG NGHỆ</span></div></footer>
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<style>
+.christmas-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 999;
+}
+.christmas-item {
+  position: absolute;
+  top: -40px;
+  left: var(--x);
+  font-size: var(--size);
+  animation: christmas-fall var(--duration) linear infinite;
+  animation-delay: var(--delay);
+}
+@keyframes christmas-fall {
+  0% { transform: translateY(0); opacity: 0; }
+  10%, 90% { opacity: .8; }
+  100% {
+    transform: translateY(110vh);
+    opacity: 0;
+  }
+}
+</style>
+
+<script>
+(function () {
+  const layer = document.createElement('div');
+  layer.className = 'christmas-layer';
+  layer.setAttribute('aria-hidden', 'true');
+
+  const symbols = ['❄️', '❄️', '✨', '🎄', '🎁', '⭐'];
+  const count = window.innerWidth < 600 ? 12 : 24;
+
+  for (let i = 0; i < count; i++) {
+    const item = document.createElement('span');
+    item.className = 'christmas-item';
+    item.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+
+    item.style.setProperty('--x', Math.random() * 100 + '%');
+    item.style.setProperty('--size', (12 + Math.random() * 13) + 'px');
+    item.style.setProperty('--duration', (12 + Math.random() * 12) + 's');
+    item.style.setProperty('--delay', (-Math.random() * 24) + 's');
+
+    layer.appendChild(item);
+  }
+
+  document.body.appendChild(layer);
+})();
+</script>
+
 </body>
 </html>
