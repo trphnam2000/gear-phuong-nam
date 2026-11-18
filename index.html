@@ -100,32 +100,48 @@
   }
 }
 </style>
-
 <script>
 (function () {
   const layer = document.createElement('div');
   layer.className = 'christmas-layer';
   layer.setAttribute('aria-hidden', 'true');
-
   const symbols = ['❄️', '❄️', '✨', '🎄', '🎁', '⭐'];
   const count = window.innerWidth < 600 ? 12 : 24;
-
   for (let i = 0; i < count; i++) {
     const item = document.createElement('span');
     item.className = 'christmas-item';
     item.textContent = symbols[Math.floor(Math.random() * symbols.length)];
-
     item.style.setProperty('--x', Math.random() * 100 + '%');
     item.style.setProperty('--size', (12 + Math.random() * 13) + 'px');
     item.style.setProperty('--duration', (12 + Math.random() * 12) + 's');
     item.style.setProperty('--delay', (-Math.random() * 24) + 's');
-
     layer.appendChild(item);
   }
-
   document.body.appendChild(layer);
 })();
 </script>
+  
+<!-- MU NOEL TREN LOGO -->
+<style>
+.hero-art .chip {
+  position: relative;
+}
+.hero-art .chip::after {
+  content: "";
+  position: absolute;
+  width: 78px;
+  height: 60px;
+  top: -30px;
+  left: -25px;
+  transform: rotate(-22deg);
+  pointer-events: none;
+  z-index: 10;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 80'%3E%3Cpath d='M12 52 Q22 12 72 9 Q65 28 83 47 L80 55 L15 61 Z' fill='%23E32636' stroke='%23A20D1B' stroke-width='2'/%3E%3Cpath d='M12 49 Q46 42 82 47 Q88 53 81 61 Q46 57 13 64 Q3 59 12 49Z' fill='white'/%3E%3Ccircle cx='75' cy='12' r='11' fill='white'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+</style>
+<!-- KET THUC MU NOEL -->
 
 </body>
 </html>
