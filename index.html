@@ -120,5 +120,24 @@
   document.body.appendChild(layer);
 })();
 </script>
+<!-- GEAR PHUONG NAM - VIEW COUNTER -->
+<div style="text-align:center; padding:12px; color:#ccc; font-size:14px;">
+  👁 Lượt xem: <strong id="gpn-views">...</strong>
+</div>
+
+<script>
+fetch('https://countapi.mileshilliard.com/api/v1/hit/gear_phuong_nam_sc_views_2026')
+  .then(res => {
+    if (!res.ok) throw new Error('Counter error');
+    return res.json();
+  })
+  .then(data => {
+    document.getElementById('gpn-views').textContent =
+      Number(data.value).toLocaleString('vi-VN');
+  })
+  .catch(() => {
+    document.getElementById('gpn-views').textContent = '—';
+  });
+</script>
 </body>
 </html>
