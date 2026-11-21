@@ -13,7 +13,64 @@
 <body>
 <header class="top"><div class="wrap"><a class="brand" href="/">GEAR <span>PHƯƠNG NAM</span><div style="font-size:9px;color:#aaa;letter-spacing:.12em">PC • LINH KIỆN • CÔNG NGHỆ</div></a><a class="home" href="/">← VỀ TRANG CHỦ</a></div></header>
 <section class="hero wrap"><div class="eyebrow">GEAR PHƯƠNG NAM / CÔNG CỤ CHỌN CẤU HÌNH</div><h1>GPN PC <span>BUILDER</span> <small style="font-size:14px;color:#b9a4a7">1.0</small></h1><p>Tự chọn linh kiện, xem nhanh cấu hình và chuẩn bị đánh giá khả năng đáp ứng nhu cầu. Tư vấn chi tiết trực tiếp cùng Gear Phương Nam.</p><span class="tag">● BẢN GIAO DIỆN ĐẦU TIÊN</span></section>
-<main class="wrap layout"><section class="panel"><h2>01 / Chọn linh kiện</h2><p class="hint">Chọn từng thành phần. Danh sách hiện là dữ liệu mẫu để thử giao diện, chưa phải cơ sở dữ liệu chính thức.</p><div class="fields" id="fields"></div><div class="divider"></div><h2>02 / Nhu cầu sử dụng</h2><p class="hint">Chọn nhu cầu để chuẩn bị cho chức năng đánh giá tự động.</p><div class="fields"><div class="field"><label for="need">Game / phần mềm</label><select id="need"><option value="">-- Chọn nhu cầu --</option><option>Liên Minh Huyền Thoại</option><option>Valorant</option><option>PUBG</option><option>FC Online</option><option>Genshin Impact</option><option>CapCut</option><option>AutoCAD</option><option>Photoshop</option><option>Blender</option></select></div><div class="field"><label for="resolution">Độ phân giải dự kiến</label><select id="resolution"><option value="">-- Chọn độ phân giải --</option><option>1080p</option><option>1440p</option><option>4K</option><option>Không áp dụng</option></select></div></div></section><aside class="panel"><h2>Cấu hình đã chọn</h2><p class="hint">Tóm tắt linh kiện theo lựa chọn của khách.</p><ul class="selected" id="selected"></ul><div class="actions"><button class="primary" id="analyze">⚡ PHÂN TÍCH CẤU HÌNH</button><button class="secondary" id="copy">SAO CHÉP CẤU HÌNH</button><a class="secondary" style="text-align:center" href="https://zalo.me/0377592000" target="_blank" rel="noopener noreferrer">TƯ VẤN QUA ZALO ↗</a></div><div class="notice">Kết quả đánh giá chỉ mang tính tham khảo. Hiện phiên bản này chưa tích hợp dữ liệu hiệu năng nên không tự tạo FPS hoặc kết luận tương thích.</div><div class="results" id="results"><h2>03 / Kết quả</h2><div class="tabs" id="tabs"><button class="tab active" data-tab="compat">Tương thích</button><button class="tab" data-tab="gaming">Gaming</button><button class="tab" data-tab="software">Phần mềm</button><button class="tab" data-tab="upgrade">Nâng cấp</button></div><div class="result-body" id="resultBody" aria-live="polite"></div></div></aside></main>
+<main class="wrap layout"><section class="panel"><h2>01 / Chọn linh kiện</h2><p class="hint">Chọn từng thành phần. Danh sách hiện là dữ liệu mẫu để thử giao diện, chưa phải cơ sở dữ liệu chính thức.</p><div class="fields" id="fields"></div><div class="divider"></div><h2>02 / Nhu cầu sử dụng</h2><p class="hint">Chọn nhu cầu để chuẩn bị cho chức năng đánh giá tự động.</p><div class="fields"><div class="field"><label for="need">Game / phần mềm</label>
+<select id="need">
+  <option value="">-- Chọn nhu cầu --</option>
+  <optgroup label="🎮 GAME (30)">
+    <option>Liên Minh Huyền Thoại</option>
+    <option>Valorant</option>
+    <option>Counter-Strike 2</option>
+    <option>CrossFire (Đột Kích)</option>
+    <option>PUBG: Battlegrounds</option>
+    <option>PUBG Mobile (Giả lập)</option>
+    <option>Free Fire (Giả lập)</option>
+    <option>FC Online</option>
+    <option>Teamfight Tactics (Đấu Trường Chân Lý)</option>
+    <option>Genshin Impact</option>
+    <option>Honkai: Star Rail</option>
+    <option>Wuthering Waves</option>
+    <option>Zenless Zone Zero</option>
+    <option>Black Myth: Wukong</option>
+    <option>Grand Theft Auto V</option>
+    <option>Red Dead Redemption 2</option>
+    <option>Cyberpunk 2077</option>
+    <option>Elden Ring</option>
+    <option>Hogwarts Legacy</option>
+    <option>Forza Horizon 5</option>
+    <option>Call of Duty: Warzone</option>
+    <option>Fortnite</option>
+    <option>Apex Legends</option>
+    <option>Overwatch 2</option>
+    <option>Dota 2</option>
+    <option>Minecraft</option>
+    <option>Roblox</option>
+    <option>Palworld</option>
+    <option>Rust</option>
+    <option>ARK: Survival Ascended</option>
+  </optgroup>
+  <optgroup label="💻 PHẦN MỀM (20)">
+    <option>Microsoft Word</option>
+    <option>Microsoft Excel</option>
+    <option>Microsoft PowerPoint</option>
+    <option>Adobe Photoshop</option>
+    <option>Adobe Illustrator</option>
+    <option>Adobe Premiere Pro</option>
+    <option>Adobe After Effects</option>
+    <option>Adobe Lightroom Classic</option>
+    <option>Adobe Audition</option>
+    <option>CapCut PC</option>
+    <option>DaVinci Resolve</option>
+    <option>AutoCAD</option>
+    <option>SketchUp</option>
+    <option>Blender</option>
+    <option>3ds Max</option>
+    <option>Revit</option>
+    <option>SolidWorks</option>
+    <option>Visual Studio 2022</option>
+    <option>Android Studio</option>
+    <option>OBS Studio</option>
+  </optgroup>
+</select></div><div class="field"><label for="resolution">Độ phân giải dự kiến</label><select id="resolution"><option value="">-- Chọn độ phân giải --</option><option>1080p</option><option>1440p</option><option>4K</option><option>Không áp dụng</option></select></div></div></section><aside class="panel"><h2>Cấu hình đã chọn</h2><p class="hint">Tóm tắt linh kiện theo lựa chọn của khách.</p><ul class="selected" id="selected"></ul><div class="actions"><button class="primary" id="analyze">⚡ PHÂN TÍCH CẤU HÌNH</button><button class="secondary" id="copy">SAO CHÉP CẤU HÌNH</button><a class="secondary" style="text-align:center" href="https://zalo.me/0377592000" target="_blank" rel="noopener noreferrer">TƯ VẤN QUA ZALO ↗</a></div><div class="notice">Kết quả đánh giá chỉ mang tính tham khảo. Hiện phiên bản này chưa tích hợp dữ liệu hiệu năng nên không tự tạo FPS hoặc kết luận tương thích.</div><div class="results" id="results"><h2>03 / Kết quả</h2><div class="tabs" id="tabs"><button class="tab active" data-tab="compat">Tương thích</button><button class="tab" data-tab="gaming">Gaming</button><button class="tab" data-tab="software">Phần mềm</button><button class="tab" data-tab="upgrade">Nâng cấp</button></div><div class="result-body" id="resultBody" aria-live="polite"></div></div></aside></main>
 <footer class="footer">© Gear Phương Nam • GPN PC BUILDER 1.0 • Hotline 0377 592 000</footer>
 <script>
 // Du lieu mau de kiem tra giao dien. Se thay bang danh muc da duyet.
