@@ -27,7 +27,24 @@
       rotate(360deg);
   }
 }@media(max-width:850px){.layout{grid-template-columns:1fr}.hero{padding-top:35px}}@media(max-width:520px){.fields{grid-template-columns:1fr}.panel{padding:16px}.hero h1{font-size:34px}.top .wrap{min-height:65px}.brand{font-size:13px}.home{font-size:10px;padding:9px}.selected li{font-size:12px}}@media(prefers-reduced-motion:reduce){.snow{display:none}html{scroll-behavior:auto}}
-</style>
+span.snow {
+    position: fixed !important;
+    top: -50px !important;
+    pointer-events: none;
+    z-index: 9999;
+    user-select: none;
+    opacity: 0.85;
+    animation: fall 12s linear infinite !important;
+    will-change: transform;
+}
+@keyframes fall {
+    0% {
+        transform: translate3d(0, -50px, 0) rotate(0deg);
+    }
+    100% {
+        transform: translate3d(var(--drift, 0px), 110vh, 0) rotate(360deg);
+    }
+}</style>
 </head>
 <body>
 <header class="top"><div class="wrap"><a class="brand" href="/">GEAR <span>PHƯƠNG NAM</span><div style="font-size:9px;color:#aaa;letter-spacing:.12em">PC • LINH KIỆN • CÔNG NGHỆ</div></a><a class="home" href="/">← VỀ TRANG CHỦ</a></div></header>
