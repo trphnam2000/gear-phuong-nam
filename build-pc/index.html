@@ -157,10 +157,109 @@ const catalog = [
   ]
 }
 ];
-const fields=document.getElementById('fields');const selected=document.getElementById('selected');
-for(const c of catalog){const div=document.createElement('div');div.className='field';const label=document.createElement('label');label.htmlFor=c.id;label.textContent=c.name;const select=document.createElement('select');select.id=c.id;select.innerHTML='<option value="">-- Chọn linh kiện --</option>';for(const item of c.items){const o=document.createElement('option');o.value=item;o.textContent=item;select.appendChild(o)}select.addEventListener('change',render);div.append(label,select);fields.appendChild(div)}
-function render(){selected.replaceChildren();for(const c of catalog){const li=document.createElement('li');const a=document.createElement('span');a.textContent=c.name;const b=document.createElement('span');b.textContent=document.getElementById(c.id).value||'Chưa chọn';li.append(a,b);selected.appendChild(li)}}render();
-const messages={compat:'Chưa đánh giá tương thích: hệ thống đang chờ bảng quy tắc CPU, socket, chipset và RAM đã được xác minh.',gaming:'Chưa đủ dữ liệu hiệu năng để ước tính FPS hoặc mức đáp ứng của game đã chọn.',software:'Chưa đủ dữ liệu yêu cầu phần mềm để đánh giá mức đáp ứng.',upgrade:'Chưa thể đề xuất nâng cấp khi chưa có kết quả đánh giá đáng tin cậy.'};
+const fields = document.getElementById('fields');
+const selected = document.getElementById('selected');
+// Số thanh RAM mặc định
+let ramQuantity = 1;
+// Tạo các ô chọn linh kiện
+for (const c of catalog) {
+  const div = document.createElement('div');
+  div.className = 'field';
+  const label = document.createElement('label');
+  label.htmlFor = c.id;
+  label.textContent = c.name;
+  const select = document.createElement('select');
+  select.id = c.id;
+  const placeholder = document.createElement('option');
+  placeholder.value = '';
+  placeholder.textContent = '-- Chọn linh kiện --';
+  select.appendChild(placeholder);
+  for (const item of c.items) {
+    const option = document.createElement('option');
+    option.value = item;
+    option.textContent = item;
+    select.appendChild(option);
+  }
+  select.addEventListener('change', render);
+  div.appendChild(label);
+  div.appendChild(select);
+  // Thêm lựa chọn số thanh ngay bên dưới RAM
+  if (c.id === 'ram') {
+    const quantityLabel = document.createElement('label');
+    quantityLabel.htmlFor = 'ramQuantity';
+    quantityLabel.textContent = 'Số lượng thanh RAM';
+    quantityLabel.style.display = 'block';
+    quantityLabel.style.marginTop = '12px';
+    const quantitySelect = document.createElement('select');
+    quantitySelect.id = 'ramQuantity';
+    [1, 2, 4].forEach(qty => {
+      const option = document.createElement('option');
+      option.value = qty;
+      option.textContent = qty + ' thanh';
+      quantitySelect.appendChild(option);
+    });
+    const totalDisplay = document.createElement('div');
+    totalDisplay.id = 'ramTotal';
+    totalDisplay.style.marginTop = '10px';
+    totalDisplay.style.padding = '10px 12px';
+    totalDisplay.style.background = '#291317';
+    totalDisplay.style.border = '1px solid #81323a';
+    totalDisplay.style.borderRadius = '5px';
+    totalDisplay.style.color = '#ff4654';
+    totalDisplay.style.fontWeight = 'bold';
+    quantitySelect.addEventListener('change', () => {
+      ramQuantity = Number(quantitySelect.value);
+      render();
+    });
+    div.appendChild(quantityLabel);
+    div.appendChild(quantitySelect);
+    div.appendChild(totalDisplay);
+  }
+  fields.appendChild(div);
+}
+// Tạo nội dung hiển thị RAM
+function getRamSummary() {
+  const ram = document.getElementById('ram').value;
+  if (!ram) return 'Chưa chọn';
+  const match = ram.match(/(\d+)GB/i);
+  if (!match) return ram;
+  const capacity = Number(match[1]);
+  const total = capacity * ramQuantity;
+  return `${ramQuantity} x ${capacity}GB = ${total}GB | ${ram}`;
+}
+// Cập nhật tổng dung lượng và bảng cấu hình
+function render() {
+  const ram = document.getElementById('ram').value;
+  const totalDisplay = document.getElementById('ramTotal');
+  if (totalDisplay) {
+    if (ram) {
+      const match = ram.match(/(\d+)GB/i);
+      if (match) {
+        const total = Number(match[1]) * ramQuantity;
+        totalDisplay.textContent =
+          `TỔNG RAM: ${total}GB (${ramQuantity} thanh)`;
+      } else {
+        totalDisplay.textContent = 'Chưa xác định dung lượng RAM';
+      }
+    } else {
+      totalDisplay.textContent = 'Chọn RAM để tính tổng dung lượng';
+    }
+  }
+  selected.replaceChildren();
+  for (const c of catalog) {
+    const li = document.createElement('li');
+    const a = document.createElement('span');
+    const b = document.createElement('span');
+    a.textContent = c.name;
+    b.textContent = c.id === 'ram'
+      ? getRamSummary()
+      : (document.getElementById(c.id).value || 'Chưa chọn');
+    li.appendChild(a);
+    li.appendChild(b);
+    selected.appendChild(li);
+  }
+}
+  const messages={compat:'Chưa đánh giá tương thích: hệ thống đang chờ bảng quy tắc CPU, socket, chipset và RAM đã được xác minh.',gaming:'Chưa đủ dữ liệu hiệu năng để ước tính FPS hoặc mức đáp ứng của game đã chọn.',software:'Chưa đủ dữ liệu yêu cầu phần mềm để đánh giá mức đáp ứng.',upgrade:'Chưa thể đề xuất nâng cấp khi chưa có kết quả đánh giá đáng tin cậy.'};
 let active='compat';const results=document.getElementById('results');const body=document.getElementById('resultBody');
 function showTab(){body.textContent=messages[active];document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active',b.dataset.tab===active))}
 document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{active=b.dataset.tab;showTab()}));
