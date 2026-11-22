@@ -535,6 +535,57 @@ gpnCheckPsu(
   active = 'compat';
   showTab();
   results.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+const selectedNeed = document.getElementById('need').value;
+const selectedGPU = document.getElementById('gpu').value;
+const ramText = document.getElementById('ram').value;
+const ramQuantity = Number(document.getElementById('ramQuantity').value);
+const ramGB = Number(ramText.match(/(\d+)\s*GB/i)?.[1] || 0) * ramQuantity;
+if (selectedNeed && cpu && selectedGPU && ramGB > 0) {
+  messages.gaming = 'Đang đánh giá cấu hình...';
+  messages.software = 'Đang đánh giá cấu hình...';
+  fetch('./gpn-data.json')
+    .then(response => {
+      if (!response.ok) throw new Error('Không tải được dữ liệu');
+      return response.json();
+    })
+    .then(items => {
+      const result = GPN.evaluateAll(items, {
+        cpu: cpu,
+        gpu: selectedGPU,
+        ramGB: ramGB
+      }, [selectedNeed])[0];
+      if (!result) {
+        messages.gaming = 'Không tìm thấy dữ liệu cho nhu cầu đã chọn.';
+        messages.software = messages.gaming;
+      } else {
+        const detail =
+          'CPU: ' + result.checks.cpu + '\n' +
+          'GPU: ' + result.checks.gpu + '\n' +
+          'RAM: ' + result.checks.ram;
+        const content =
+          result.name + '\n' +
+          'Kết luận: ' + result.status + '\n' +
+          detail + '\n\n' +
+          'Lưu ý: Kết quả chỉ mang tính tham khảo. Đáp ứng cấu hình tối thiểu có thể chỉ đủ khởi chạy, không đồng nghĩa sử dụng mượt mà.';
+        if (result.type === 'game') {
+          messages.gaming = content;
+          messages.software = 'Nhu cầu đã chọn là game. Xem kết quả tại tab Gaming.';
+          active = 'gaming';
+        } else {
+          messages.software = content;
+          messages.gaming = 'Nhu cầu đã chọn là phần mềm. Xem kết quả tại tab Phần mềm.';
+          active = 'software';
+        }
+      }
+      showTab();
+    })
+    .catch(error => {
+      console.error('GPN:', error);
+      messages.gaming = 'Không thể đánh giá. Vui lòng thử lại.';
+      messages.software = messages.gaming;
+      showTab();
+    });
+}
 });
 // Khởi tạo danh sách linh kiện và bảng cấu hình ngay khi tải trang.
 render();
