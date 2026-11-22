@@ -366,27 +366,64 @@ function render() {
     selected.appendChild(li);
   }
 }
+ 
+/* GPN PC BUILDER - PHAN TICH TUONG THICH 1.0 */
+
+const gpnCpuPlatforms = [
+  {gen: 4, socket: 'LGA1150', boards: ['H81','B85','H87','Z87','Z97']},
+  {gen: 6, socket: 'LGA1151', boards: ['H110','B150','H170','Z170','B250','H270','Z270']},
+  {gen: 7, socket: 'LGA1151', boards: ['H110','B150','H170','Z170','B250','H270','Z270']},
+  {gen: 8, socket: 'LGA1151', boards: ['H310','B360','B365','H370','Z370','Z390']},
+  {gen: 9, socket: 'LGA1151', boards: ['H310','B360','B365','H370','Z370','Z390']},
+  {gen: 10, socket: 'LGA1200', boards: ['H410','B460','H470','Z490','H510','B560','H570','Z590']},
+  {gen: 11, socket: 'LGA1200', boards: ['H510','B560','H570','Z590','Z490','H470']},
+  {gen: 12, socket: 'LGA1700', boards: ['H610','B660','H670','Z690','B760','H770','Z790']},
+  {gen: 13, socket: 'LGA1700', boards: ['H610','B660','H670','Z690','B760','H770','Z790']},
+  {gen: 14, socket: 'LGA1700', boards: ['H610','B660','H670','Z690','B760','H770','Z790']}
+];
+function gpnGetCpuGen(cpu) {
+  const match = cpu.match(/Core i[3579]-(\d{4,5})/i);
+  if (!match) return null;
+
+  const model = match[1];
+
+  if (model.length === 5) {
+    return Number(model.slice(0, 2));
+  }
+
+  return Number(model[0]);
+}
+function gpnCheckCpuBoard(cpu, board) {
+  if (!cpu || !board) {
+    return '⚠️ Chưa chọn đủ CPU và mainboard.';
+  }
+  if (cpu.includes('Xeon')) {
+    return '⚠️ Xeon: cần xác minh socket, model mainboard và BIOS cụ thể.';
+  }
+  const gen = gpnGetCpuGen(cpu);
+  const platform = gpnCpuPlatforms.find(p => p.gen === gen);
+  if (!platform) {
+    return '⚠️ Chưa đủ dữ liệu để xác minh CPU này.';
+  }
+  if (!platform.boards.includes(board)) {
+    return '❌ CPU và chipset không thuộc nền tảng tương thích.';
+  }
+  return '⚠️ CPU và chipset phù hợp về nền tảng (' +
+    platform.socket +
+    '). Cần xác minh model mainboard và phiên bản BIOS.';
+}
   const messages={compat:'Chưa đánh giá tương thích: hệ thống đang chờ bảng quy tắc CPU, socket, chipset và RAM đã được xác minh.',gaming:'Chưa đủ dữ liệu hiệu năng để ước tính FPS hoặc mức đáp ứng của game đã chọn.',software:'Chưa đủ dữ liệu yêu cầu phần mềm để đánh giá mức đáp ứng.',upgrade:'Chưa thể đề xuất nâng cấp khi chưa có kết quả đánh giá đáng tin cậy.'};
 let active='compat';const results=document.getElementById('results');const body=document.getElementById('resultBody');
 function showTab(){body.textContent=messages[active];document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active',b.dataset.tab===active))}
 document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{active=b.dataset.tab;showTab()}));
-document.getElementById('analyze').addEventListener('click',()=>{results.classList.add('show');active='compat';showTab();results.scrollIntoView({behavior:'smooth',block:'nearest'})});
-function summary(){return 'GPN PC BUILDER 1.0\n'+catalog.map(c=>c.name+': '+(document.getElementById(c.id).value||'Chưa chọn')).join('\n')+'\nNhu cầu: '+(document.getElementById('need').value||'Chưa chọn')+'\nĐộ phân giải: '+(document.getElementById('resolution').value||'Chưa chọn')}
-document.getElementById('copy').addEventListener('click',async()=>{const txt=summary();try{await navigator.clipboard.writeText(txt);alert('Đã sao chép cấu hình!')}catch(e){const ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();alert('Đã sao chép cấu hình!')}});
-if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-  const symbols = ['❄️', '❄️', '❄️', '❄️', '🎄', '🎁', '🎅', '⭐'];
-  for (let i = 0; i < 55; i++) {
-    const s = document.createElement('span');
-    s.className = 'snow';
-    s.textContent = symbols[Math.floor(Math.random() * symbols.length)];
-    s.style.left = (Math.random() * 100) + '%';
-    s.style.fontSize = (12 + Math.random() * 14) + 'px';
-    s.style.animationDuration = (9 + Math.random() * 12) + 's';
-    s.style.animationDelay = (-Math.random() * 21) + 's';
-    s.style.setProperty('--drift', ((Math.random() * 100) - 50) + 'px');
-    document.body.appendChild(s);
-  }
-}
-</script>
-</body>
-</html>
+document.getElementById('analyze').addEventListener('click', () => {
+  const cpu = document.getElementById('cpu').value;
+  const board = document.getElementById('board').value;
+
+  messages.compat = gpnCheckCpuBoard(cpu, board);
+
+  results.classList.add('show');
+  active = 'compat';
+  showTab();
+  results.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+});
