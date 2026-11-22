@@ -427,3 +427,58 @@ document.getElementById('analyze').addEventListener('click', () => {
   showTab();
   results.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 });
+
+
+// Khởi tạo danh sách linh kiện và bảng cấu hình ngay khi tải trang.
+render();
+
+// Sao chép cấu hình (giữ nguyên nút có sẵn).
+function gpnSummary() {
+  const lines = ['GPN PC BUILDER 1.0'];
+  for (const c of catalog) {
+    const value = c.id === 'ram'
+      ? getRamSummary()
+      : (document.getElementById(c.id).value || 'Chưa chọn');
+    lines.push(c.name + ': ' + value);
+  }
+  lines.push('Nhu cầu: ' + (document.getElementById('need').value || 'Chưa chọn'));
+  lines.push('Độ phân giải: ' + (document.getElementById('resolution').value || 'Chưa chọn'));
+  return lines.join('\n');
+}
+document.getElementById('copy').addEventListener('click', async () => {
+  const txt = gpnSummary();
+  try {
+    await navigator.clipboard.writeText(txt);
+    alert('Đã sao chép cấu hình!');
+  } catch (e) {
+    const ta = document.createElement('textarea');
+    ta.value = txt;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    const copied = document.execCommand('copy');
+    ta.remove();
+    alert(copied ? 'Đã sao chép cấu hình!' : 'Không thể sao chép tự động. Vui lòng thử lại.');
+  }
+});
+
+// Hiệu ứng Noel hiện có.
+if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const symbols = ['❄️', '❄', '☃️', '❅', '🎁', '🎅', '⭐'];
+  for (let i = 0; i < 55; i++) {
+    const s = document.createElement('span');
+    s.className = 'snow';
+    s.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+    s.style.left = (Math.random() * 100) + '%';
+    s.style.fontSize = (12 + Math.random() * 14) + 'px';
+    s.style.animationDuration = (9 + Math.random() * 12) + 's';
+    s.style.animationDelay = (-Math.random() * 21) + 's';
+    s.style.setProperty('--drift', ((Math.random() * 100) - 50) + 'px');
+    document.body.appendChild(s);
+  }
+}
+</script>
+</body>
+</html>
+
