@@ -457,6 +457,62 @@ function gpnCheckRam(board, ram) {
   return '✅ RAM ' + ramType + ' phù hợp với nền tảng mainboard ' +
     board + '. Cần xác minh model mainboard cụ thể.';
 }
+/* GPN - KIEM TRA CONG SUAT NGUON */
+function gpnCheckPsu(cpu, gpu, psu) {
+  if (!cpu || !gpu || !psu) {
+    return 'Chưa đủ thông tin CPU, VGA và nguồn để đánh giá.';
+  }
+  const gpuRules = [
+    [/RTX 5070 Ti/i, 750],
+    [/RTX 5070(?! Ti)/i, 650],
+    [/RTX 5060 Ti/i, 600],
+    [/RTX 5060(?! Ti)/i, 550],
+    [/RTX 4080 Super/i, 750],
+    [/RTX 4070 Super/i, 650],
+    [/RTX 4070(?! Super)/i, 650],
+    [/RTX 4060 Ti/i, 550],
+    [/RTX 4060(?! Ti)/i, 550],
+    [/RTX 3080/i, 750],
+    [/RTX 3070/i, 650],
+    [/RTX 3060 Ti/i, 600],
+    [/RTX 3060(?! Ti)/i, 550],
+    [/RTX 3050/i, 450],
+    [/RTX 2080/i, 650],
+    [/RTX 2070/i, 550],
+    [/RTX 2060/i, 500],
+    [/GTX 1660/i, 450],
+    [/GTX 1650/i, 350],
+    [/GTX 1080/i, 500],
+    [/GTX 1070/i, 450],
+    [/GTX 1060/i, 400],
+    [/GTX 1050/i, 300],
+    [/GTX 970/i, 500],
+    [/GTX 960/i, 400],
+    [/GTX 950/i, 350],
+    [/GTX 750 Ti/i, 300],
+    [/GT 1030/i, 300],
+    [/GT 730/i, 300]
+  ];
+  const rule = gpuRules.find(([pattern]) => pattern.test(gpu));
+  if (!rule) {
+    return 'Chưa có dữ liệu công suất khuyến nghị cho VGA này.';
+  }
+  const psuWatts = Number(psu.match(/\d+/)?.[0]);
+  if (!Number.isFinite(psuWatts)) {
+    return 'Chưa xác định được công suất nguồn.';
+  }
+  // Cong suat tham khao, khong phai ket luan ve chat luong PSU.
+  const recommended = rule[1];
+  if (psuWatts >= recommended) {
+    return '✅ Nguồn ' + psuWatts +
+      'W đạt mức khuyến nghị tham khảo (' +
+      recommended + 'W) cho cấu hình.';
+  }
+  return '❌ Nguồn ' + psuWatts +
+    'W dưới mức khuyến nghị tham khảo (' +
+    recommended + 'W). Nên chọn nguồn từ ' +
+    recommended + 'W trở lên.';
+}
   const messages={compat:'Chưa đánh giá tương thích: hệ thống đang chờ bảng quy tắc CPU, socket, chipset và RAM đã được xác minh.',gaming:'Chưa đủ dữ liệu hiệu năng để ước tính FPS hoặc mức đáp ứng của game đã chọn.',software:'Chưa đủ dữ liệu yêu cầu phần mềm để đánh giá mức đáp ứng.',upgrade:'Chưa thể đề xuất nâng cấp khi chưa có kết quả đánh giá đáng tin cậy.'};
 let active='compat';const results=document.getElementById('results');const body=document.getElementById('resultBody');
 function showTab(){body.textContent=messages[active];document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active',b.dataset.tab===active))}
@@ -468,17 +524,20 @@ const ram = document.getElementById('ram').value;
 messages.compat =
   gpnCheckCpuBoard(cpu, board) +
   '\n\n' +
-  gpnCheckRam(board, ram);
+gpnCheckRam(board, ram) +
+'\n\n' +
+gpnCheckPsu(
+  cpu,
+  document.getElementById('gpu').value,
+  document.getElementById('psu').value
+);
   results.classList.add('show');
   active = 'compat';
   showTab();
   results.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 });
-
-
 // Khởi tạo danh sách linh kiện và bảng cấu hình ngay khi tải trang.
 render();
-
 // Sao chép cấu hình (giữ nguyên nút có sẵn).
 function gpnSummary() {
   const lines = ['GPN PC BUILDER 1.0'];
