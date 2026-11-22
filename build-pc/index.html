@@ -408,7 +408,7 @@ function gpnCheckCpuBoard(cpu, board) {
   if (!platform.boards.includes(board)) {
     return '❌ CPU và chipset không thuộc nền tảng tương thích.';
   }
-  return '⚠️ CPU và chipset phù hợp về nền tảng (' +
+  return '✅ CPU và chipset phù hợp về nền tảng (' +
     platform.socket +
     '). Cần xác minh model mainboard và phiên bản BIOS.';
 }
