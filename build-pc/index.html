@@ -412,6 +412,51 @@ function gpnCheckCpuBoard(cpu, board) {
     platform.socket +
     '). Cần xác minh model mainboard và phiên bản BIOS.';
 }
+function gpnCheckRam(board, ram) {
+  if (!board || !ram) {
+    return '⚠️ Chưa chọn đủ mainboard và RAM.';
+  }
+  const ddr3 = [
+    'H61','B75','H77','Z77',
+    'H81','B85','H87','Z87','Z97'
+  ];
+  const ddr4 = [
+    'H110','B150','H170','Z170',
+    'B250','H270','Z270',
+    'H310','B360','B365','H370','Z370','Z390',
+    'H410','B460','H470','Z490',
+    'H510','B560','H570','Z590'
+  ];
+  const ddr4or5 = [
+    'H610','B660','H670','Z690',
+    'B760','H770','Z790'
+  ];
+  const ramType = ram.match(/DDR[345]/i)?.[0]?.toUpperCase();
+  if (!ramType) {
+    return '⚠️ Chưa xác định loại RAM.';
+  }
+  if (board === 'X79' || board === 'X99') {
+    return '⚠️ Cần xác minh loại RAM của mainboard ' + board + '.';
+  }
+  if (ddr4or5.includes(board)) {
+    if (ramType === 'DDR3') {
+      return '❌ RAM DDR3 không tương thích với mainboard ' + board + '.';
+    }
+    return '⚠️ Cần xác minh phiên bản DDR4 hoặc DDR5 của mainboard ' + board + '.';
+  }
+  const expected = ddr3.includes(board) ? 'DDR3'
+    : ddr4.includes(board) ? 'DDR4'
+    : null;
+  if (!expected) {
+    return '⚠️ Chưa có dữ liệu RAM cho chipset ' + board + '.';
+  }
+  if (ramType !== expected) {
+    return '❌ RAM ' + ramType + ' không tương thích với mainboard ' +
+      board + '. Mainboard này sử dụng ' + expected + '.';
+  }
+  return '✅ RAM ' + ramType + ' phù hợp với nền tảng mainboard ' +
+    board + '. Cần xác minh model mainboard cụ thể.';
+}
   const messages={compat:'Chưa đánh giá tương thích: hệ thống đang chờ bảng quy tắc CPU, socket, chipset và RAM đã được xác minh.',gaming:'Chưa đủ dữ liệu hiệu năng để ước tính FPS hoặc mức đáp ứng của game đã chọn.',software:'Chưa đủ dữ liệu yêu cầu phần mềm để đánh giá mức đáp ứng.',upgrade:'Chưa thể đề xuất nâng cấp khi chưa có kết quả đánh giá đáng tin cậy.'};
 let active='compat';const results=document.getElementById('results');const body=document.getElementById('resultBody');
 function showTab(){body.textContent=messages[active];document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active',b.dataset.tab===active))}
@@ -419,9 +464,11 @@ document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{act
 document.getElementById('analyze').addEventListener('click', () => {
   const cpu = document.getElementById('cpu').value;
   const board = document.getElementById('board').value;
-
-  messages.compat = gpnCheckCpuBoard(cpu, board);
-
+const ram = document.getElementById('ram').value;
+messages.compat =
+  gpnCheckCpuBoard(cpu, board) +
+  '\n\n' +
+  gpnCheckRam(board, ram);
   results.classList.add('show');
   active = 'compat';
   showTab();
