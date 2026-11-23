@@ -558,16 +558,17 @@ if (selectedNeed && cpu && selectedGPU && ramGB > 0) {
         messages.gaming = 'Không tìm thấy dữ liệu cho nhu cầu đã chọn.';
         messages.software = messages.gaming;
       } else {
-        const detail =
-          'CPU: ' + result.checks.cpu + '\n' +
-          'GPU: ' + result.checks.gpu + '\n' +
-          'RAM: ' + result.checks.ram;
-        const content =
-          result.name + '\n' +
-          'Kết luận: ' + result.status + '\n' +
-          detail + '\n\n' +
-          'Lưu ý: Kết quả chỉ mang tính tham khảo. Đáp ứng cấu hình tối thiểu có thể chỉ đủ khởi chạy, không đồng nghĩa sử dụng mượt mà.';
-        if (result.type === 'game') {
+    const icons = {
+  'Vượt tối thiểu': '✅',
+  'Đạt tối thiểu': '✔️',
+  'Không đạt tối thiểu': '❌',
+  'Chưa xác định': '❔'
+};
+const content =
+  icons[result.status] + ' ' + result.status.toUpperCase() +
+  '\n' + result.name +
+  '\n\nKết quả chỉ mang tính tham khảo. Cấu hình tối thiểu có thể chỉ đủ khởi chạy, không đảm bảo sử dụng mượt mà.';
+if (result.type === 'game') {
           messages.gaming = content;
           messages.software = 'Nhu cầu đã chọn là game. Xem kết quả tại tab Gaming.';
           active = 'gaming';
