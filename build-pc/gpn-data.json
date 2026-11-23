@@ -3,33 +3,33 @@
     "name": "Liên Minh Huyền Thoại",
     "type": "game",
     "cpu": "Intel Core i3-530",
-    "gpu": "NVIDIA GeForce 400 Series hoặc Intel HD 4600 / 1gb",
+    "gpu": "NVIDIA GeForce GT 430 1GB",
     "ramGB": 4,
-    "note": ""
+    "note": "GPU tham chiếu thay cho GeForce 400 Series hoặc Intel HD 4600; không phải mức tối thiểu chính thức."
   },
   {
     "name": "Valorant",
     "type": "game",
-    "cpu": "Intel Core 2 Duo",
-    "gpu": "Intel HD 4000 1GB",
+    "cpu": "Intel Core 2 Duo E8400",
+    "gpu": "Intel HD Graphics 4000",
     "ramGB": 4,
-    "note": ""
+    "note": "CPU tham chiếu cho dòng Core 2 Duo; GPU tích hợp dùng bộ nhớ chia sẻ, không có VRAM riêng 1GB."
   },
   {
     "name": "Counter-Strike 2",
     "type": "game",
     "cpu": "Intel Core i5-750",
-    "gpu": "GPU có ít nhất 1GB VRAM",
+    "gpu": "NVIDIA GeForce GTX 650 1GB",
     "ramGB": 8,
-    "note": ""
+    "note": "GPU tham chiếu có 1GB VRAM; cần kiểm tra thêm DirectX 11 và Shader Model 5.0."
   },
   {
     "name": "CrossFire (Đột Kích)",
     "type": "game",
     "cpu": "Intel Core 2 Duo T6400",
-    "gpu": "NVIDIA GeForce 9500 GT hoặc GT 520",
+    "gpu": "NVIDIA GeForce 9500 GT 1GB",
     "ramGB": 4,
-    "note": ""
+    "note": "Chọn một trong hai GPU được nêu; dung lượng VRAM là mốc tham chiếu."
   },
   {
     "name": "PUBG: Battlegrounds",
@@ -43,22 +43,22 @@
     "name": "PUBG Mobile (Giả lập)",
     "type": "game",
     "cpu": "Intel Core i3-8300",
-    "gpu": "NVIDIA GeForce GTX 1050 4gb",
+    "gpu": "NVIDIA GeForce GTX 1050 Ti 4GB",
     "ramGB": 8,
-    "note": ""
+    "note": "Chuẩn hóa GTX 1050 4GB không rõ biến thể thành GTX 1050 Ti 4GB; phụ thuộc trình giả lập."
   },
   {
     "name": "Free Fire (Giả lập)",
     "type": "game",
     "cpu": "Intel Core i5-8500",
-    "gpu": "NVIDIA GeForce GTX 660",
+    "gpu": "NVIDIA GeForce GTX 660 2GB",
     "ramGB": 8,
-    "note": ""
+    "note": "Dung lượng VRAM tham chiếu; phụ thuộc trình giả lập."
   },
   {
     "name": "FC Online",
     "type": "game",
-    "cpu": "Intel Core i3-2100 (3.1GHz)",
+    "cpu": "Intel Core i3-2100",
     "gpu": "NVIDIA GeForce GT 730 1GB",
     "ramGB": 4,
     "note": ""
@@ -67,30 +67,30 @@
     "name": "Teamfight Tactics (Đấu Trường Chân Lý)",
     "type": "game",
     "cpu": "Intel Core i3-530",
-    "gpu": "NVIDIA GeForce 400 Series hoặc Intel HD 4600 1GB",
+    "gpu": "NVIDIA GeForce GT 430 1GB",
     "ramGB": 2,
-    "note": ""
+    "note": "GPU tham chiếu thay cho GeForce 400 Series hoặc Intel HD 4600; không phải mức tối thiểu chính thức."
   },
   {
     "name": "Genshin Impact",
     "type": "game",
-    "cpu": "Intel Core i5 6500",
-    "gpu": "NVIDIA GeForce GTX 1050",
+    "cpu": "Intel Core i5-6500",
+    "gpu": "NVIDIA GeForce GTX 1050 2GB",
     "ramGB": 8,
-    "note": ""
+    "note": "VRAM tham chiếu cho GTX 1050."
   },
   {
     "name": "Honkai: Star Rail",
     "type": "game",
     "cpu": "Intel Core i5-4460",
-    "gpu": "NVIDIA GeForce GTX 1050",
+    "gpu": "NVIDIA GeForce GTX 1050 2GB",
     "ramGB": 8,
-    "note": ""
+    "note": "VRAM tham chiếu cho GTX 1050."
   },
   {
     "name": "Wuthering Waves",
     "type": "game",
-    "cpu": "Intel Core i5 9400F",
+    "cpu": "Intel Core i5-9400F",
     "gpu": "NVIDIA GeForce GTX 1060 3GB",
     "ramGB": 16,
     "note": ""
@@ -98,10 +98,10 @@
   {
     "name": "Zenless Zone Zero",
     "type": "game",
-    "cpu": "Intel Core i5 THẾ HỆ THỨ 7",
-    "gpu": "NVIDIA GeForce GTX 970",
+    "cpu": "Intel Core i5-7400",
+    "gpu": "NVIDIA GeForce GTX 970 4GB",
     "ramGB": 8,
-    "note": ""
+    "note": "CPU i5-7400 là model đại diện cho Core i5 thế hệ 7."
   },
   {
     "name": "Black Myth: Wukong",
@@ -117,7 +117,7 @@
     "cpu": "Intel Core i7-4770",
     "gpu": "NVIDIA GeForce GTX 1060 6GB",
     "ramGB": 8,
-    "note": ""
+    "note": "Cần phân biệt GTA V Legacy và Enhanced vì yêu cầu khác nhau."
   },
   {
     "name": "Red Dead Redemption 2",
@@ -138,265 +138,265 @@
   {
     "name": "Elden Ring",
     "type": "game",
-    "cpu": "Core i5-8400",
-    "gpu": "GTX 1060 3GB",
+    "cpu": "Intel Core i5-8400",
+    "gpu": "NVIDIA GeForce GTX 1060 3GB",
     "ramGB": 12,
     "note": ""
   },
   {
     "name": "Hogwarts Legacy",
     "type": "game",
-    "cpu": "Core i5-6600",
-    "gpu": "GTX 960 4GB",
+    "cpu": "Intel Core i5-6600",
+    "gpu": "NVIDIA GeForce GTX 960 4GB",
     "ramGB": 16,
     "note": ""
   },
   {
     "name": "Forza Horizon 5",
     "type": "game",
-    "cpu": "Core i5-4460",
-    "gpu": "GTX 970 4GB",
+    "cpu": "Intel Core i5-4460",
+    "gpu": "NVIDIA GeForce GTX 970 4GB",
     "ramGB": 8,
     "note": ""
   },
   {
     "name": "Call of Duty: Warzone",
     "type": "game",
-    "cpu": "Core i5-6600",
-    "gpu": "GTX 970 / GTX 1060 3GB",
+    "cpu": "Intel Core i5-6600",
+    "gpu": "NVIDIA GeForce GTX 1060 3GB",
     "ramGB": 8,
-    "note": ""
+    "note": "Chọn một GPU trong hai lựa chọn; yêu cầu có thể thay đổi theo phiên bản Warzone."
   },
   {
     "name": "Fortnite",
     "type": "game",
-    "cpu": "Core i3-3225",
+    "cpu": "Intel Core i3-3225",
     "gpu": "Intel HD Graphics 4000",
     "ramGB": 8,
-    "note": ""
+    "note": "GPU tích hợp dùng RAM hệ thống; cần đối chiếu yêu cầu phiên bản Fortnite hiện hành."
   },
   {
     "name": "Apex Legends",
     "type": "game",
-    "cpu": "Core i3-6300",
-    "gpu": "GTX 950 2GB",
+    "cpu": "Intel Core i3-6300",
+    "gpu": "NVIDIA GeForce GTX 950 2GB",
     "ramGB": 6,
     "note": ""
   },
   {
     "name": "Overwatch 2",
     "type": "game",
-    "cpu": "Core i5-4460",
-    "gpu": "GeForce GTX 600 Series",
+    "cpu": "Intel Core i5-4460",
+    "gpu": "NVIDIA GeForce GTX 660 2GB",
     "ramGB": 6,
-    "note": ""
+    "note": "GTX 660 là model đại diện cho GTX 600 Series; không đại diện cho toàn bộ dòng."
   },
   {
     "name": "Dota 2",
     "type": "game",
-    "cpu": "Core i5-4460",
-    "gpu": "GeForce 8600 / 9600 GT",
+    "cpu": "Intel Core i5-4460",
+    "gpu": "NVIDIA GeForce 9600 GT 512MB",
     "ramGB": 4,
-    "note": ""
+    "note": "Chọn GeForce 9600 GT thay cho hai lựa chọn; VRAM là cấu hình phổ biến của model."
   },
   {
     "name": "Minecraft",
     "type": "game",
-    "cpu": "Core i5-4460",
-    "gpu": "GeForce 400 Series",
+    "cpu": "Intel Core i5-4460",
+    "gpu": "NVIDIA GeForce GT 430 1GB",
     "ramGB": 2,
-    "note": ""
+    "note": "GT 430 là model đại diện cho GeForce 400 Series; yêu cầu còn tùy Java/Bedrock và phiên bản."
   },
   {
     "name": "Roblox",
     "type": "game",
-    "cpu": "Core i5-4460",
-    "gpu": "GPU tích hợp hỗ trợ DirectX 10 trở lên",
+    "cpu": "Intel Core i5-4460",
+    "gpu": "Intel HD Graphics 4000",
     "ramGB": 1,
-    "note": ""
+    "note": "GPU tích hợp hỗ trợ DirectX 11, chọn làm mốc thay cho yêu cầu DirectX 10; RAM 1GB có thể không phù hợp phiên bản hiện hành."
   },
   {
     "name": "Palworld",
     "type": "game",
-    "cpu": "Core i5-3570K",
-    "gpu": "GTX 1050 2GB",
+    "cpu": "Intel Core i5-3570K",
+    "gpu": "NVIDIA GeForce GTX 1050 2GB",
     "ramGB": 16,
     "note": ""
   },
   {
     "name": "Rust",
     "type": "game",
-    "cpu": "Core i5-6600",
-    "gpu": "GTX 1060 3GB",
+    "cpu": "Intel Core i5-6600",
+    "gpu": "NVIDIA GeForce GTX 1060 3GB",
     "ramGB": 12,
     "note": ""
   },
   {
     "name": "ARK: Survival Ascended",
     "type": "game",
-    "cpu": "Core i7-6800K",
-    "gpu": "GTX 1080 8GB",
+    "cpu": "Intel Core i7-6800K",
+    "gpu": "NVIDIA GeForce GTX 1080 8GB",
     "ramGB": 16,
     "note": ""
   },
   {
     "name": "Microsoft Word",
     "type": "software",
-    "cpu": "Core i5-4460",
-    "gpu": "Intel HD Graphics 4000",
+    "cpu": "Intel Core i5-4460",
+    "gpu": "Intel HD Graphics 4600",
     "ramGB": 4,
-    "note": ""
+    "note": "Sửa HD Graphics 4000 thành HD Graphics 4600 tích hợp đúng với i5-4460; mốc tham chiếu."
   },
   {
     "name": "Microsoft Excel",
     "type": "software",
-    "cpu": "Core i5-4460",
-    "gpu": "Intel HD Graphics 4000",
+    "cpu": "Intel Core i5-4460",
+    "gpu": "Intel HD Graphics 4600",
     "ramGB": 4,
-    "note": "Mã CPU/GPU được chuẩn hóa theo dòng Microsoft Word trong bảng gốc; chỉ là mức tham chiếu."
+    "note": "Mốc tham chiếu theo Microsoft Word; không phải tối thiểu chính thức."
   },
   {
     "name": "Microsoft PowerPoint",
     "type": "software",
-    "cpu": "Core i5-4460",
-    "gpu": "Intel HD Graphics 4000",
+    "cpu": "Intel Core i5-4460",
+    "gpu": "Intel HD Graphics 4600",
     "ramGB": 4,
-    "note": "Mã CPU/GPU được chuẩn hóa theo dòng Microsoft Word trong bảng gốc; chỉ là mức tham chiếu."
+    "note": "Mốc tham chiếu theo Microsoft Word; không phải tối thiểu chính thức."
   },
   {
     "name": "Adobe Photoshop",
     "type": "software",
-    "cpu": "i3-4130",
-    "gpu": "GPU hỗ trợ DirectX 12",
+    "cpu": "Intel Core i3-4130",
+    "gpu": "NVIDIA GeForce GTX 1050 2GB",
     "ramGB": 8,
-    "note": ""
+    "note": "GPU tham chiếu hỗ trợ DirectX 12 thay cho yêu cầu API chung; cần kiểm tra VRAM và phiên bản Photoshop."
   },
   {
     "name": "Adobe Illustrator",
     "type": "software",
-    "cpu": "Core i3-10100",
-    "gpu": "GTX 1050 2GB",
+    "cpu": "Intel Core i3-10100",
+    "gpu": "NVIDIA GeForce GTX 1050 2GB",
     "ramGB": 8,
     "note": ""
   },
   {
     "name": "Adobe Premiere Pro",
     "type": "software",
-    "cpu": "Core i3-6100",
-    "gpu": "GTX 1050 Ti 4GB",
+    "cpu": "Intel Core i3-6100",
+    "gpu": "NVIDIA GeForce GTX 1050 Ti 4GB",
     "ramGB": 8,
-    "note": ""
+    "note": "Mốc tham chiếu; các phiên bản mới có thể yêu cầu CPU/GPU/RAM cao hơn."
   },
   {
     "name": "Adobe After Effects",
     "type": "software",
-    "cpu": "Core i3-6100",
-    "gpu": "GTX 1050 Ti 4GB",
+    "cpu": "Intel Core i3-6100",
+    "gpu": "NVIDIA GeForce GTX 1050 Ti 4GB",
     "ramGB": 16,
-    "note": ""
+    "note": "Mốc tham chiếu; cần đối chiếu phiên bản cụ thể."
   },
   {
     "name": "Adobe Lightroom Classic",
     "type": "software",
-    "cpu": "Core i3-4130",
-    "gpu": "GTX 1050 2GB",
+    "cpu": "Intel Core i3-4130",
+    "gpu": "NVIDIA GeForce GTX 1050 2GB",
     "ramGB": 8,
     "note": ""
   },
   {
     "name": "Adobe Audition",
     "type": "software",
-    "cpu": "Core i3-6100",
-    "gpu": "GTX 750 Ti 2GB",
+    "cpu": "Intel Core i3-6100",
+    "gpu": "NVIDIA GeForce GTX 750 Ti 2GB",
     "ramGB": 8,
-    "note": ""
+    "note": "GPU rời không nhất thiết bắt buộc cho tác vụ âm thanh cơ bản."
   },
   {
     "name": "CapCut PC",
     "type": "software",
-    "cpu": "Core i5-4460",
-    "gpu": "GT 1030 2GB",
+    "cpu": "Intel Core i5-4460",
+    "gpu": "NVIDIA GeForce GT 1030 2GB",
     "ramGB": 4,
-    "note": ""
+    "note": "GPU tham chiếu; không khẳng định cần GPU rời."
   },
   {
     "name": "DaVinci Resolve",
     "type": "software",
-    "cpu": "Core i5-4460",
-    "gpu": "GTX 1650 4GB",
+    "cpu": "Intel Core i5-4460",
+    "gpu": "NVIDIA GeForce GTX 1650 4GB",
     "ramGB": 16,
-    "note": ""
+    "note": "Mốc tham chiếu; cần đối chiếu phiên bản Resolve và tính năng sử dụng."
   },
   {
     "name": "AutoCAD",
     "type": "software",
-    "cpu": "Core i3-10100",
-    "gpu": "GTX 1050 Ti 4GB",
+    "cpu": "Intel Core i3-10100",
+    "gpu": "NVIDIA GeForce GTX 1050 Ti 4GB",
     "ramGB": 8,
-    "note": ""
+    "note": "Mốc tham chiếu, không phải GPU workstation được chứng nhận."
   },
   {
     "name": "SketchUp",
     "type": "software",
-    "cpu": "Core i3-4130",
-    "gpu": "GTX 1050 Ti 4GB",
+    "cpu": "Intel Core i3-4130",
+    "gpu": "NVIDIA GeForce GTX 1050 Ti 4GB",
     "ramGB": 8,
     "note": ""
   },
   {
     "name": "Blender",
     "type": "software",
-    "cpu": "Core i5-4460",
-    "gpu": "GTX 950 2GB",
+    "cpu": "Intel Core i5-4460",
+    "gpu": "NVIDIA GeForce GTX 950 2GB",
     "ramGB": 8,
-    "note": ""
+    "note": "Mốc tham chiếu; phiên bản Blender mới có thể yêu cầu GPU/driver khác."
   },
   {
     "name": "3ds Max",
     "type": "software",
-    "cpu": "Core i3-4130",
-    "gpu": "GTX 1050 Ti 4GB",
+    "cpu": "Intel Core i3-4130",
+    "gpu": "NVIDIA GeForce GTX 1050 Ti 4GB",
     "ramGB": 4,
-    "note": ""
+    "note": "Mốc tham chiếu; cần đối chiếu phiên bản cụ thể."
   },
   {
     "name": "Revit",
     "type": "software",
-    "cpu": "Core i3-4130",
-    "gpu": "GTX 1050 Ti 4GB",
+    "cpu": "Intel Core i3-4130",
+    "gpu": "NVIDIA GeForce GTX 1050 Ti 4GB",
     "ramGB": 16,
     "note": ""
   },
   {
     "name": "SolidWorks",
     "type": "software",
-    "cpu": "Core i5-10400",
-    "gpu": "GTX 1650 4GB",
+    "cpu": "Intel Core i5-10400",
+    "gpu": "NVIDIA GeForce GTX 1650 4GB",
     "ramGB": 16,
-    "note": ""
+    "note": "GTX 1650 không phải GPU workstation được chứng nhận; khả năng chạy không đồng nghĩa hỗ trợ chính thức."
   },
   {
     "name": "Visual Studio 2022",
     "type": "software",
-    "cpu": "Core i3-4130",
+    "cpu": "Intel Core i3-4130",
     "gpu": "Intel HD Graphics 4400",
     "ramGB": 4,
-    "note": ""
+    "note": "GPU tích hợp đi cùng i3-4130; dung lượng RAM còn phụ thuộc workload."
   },
   {
     "name": "Android Studio",
     "type": "software",
-    "cpu": "Core i5-8400",
-    "gpu": "GTX 1050 Ti 4GB",
+    "cpu": "Intel Core i5-8400",
+    "gpu": "NVIDIA GeForce GTX 1050 Ti 4GB",
     "ramGB": 16,
-    "note": ""
+    "note": "GPU tham chiếu; hiệu năng giả lập còn phụ thuộc VT-x, RAM và cấu hình AVD."
   },
   {
     "name": "OBS Studio",
     "type": "software",
-    "cpu": "Core i5-2500K",
-    "gpu": "GTX 950 2GB",
+    "cpu": "Intel Core i5-2500K",
+    "gpu": "NVIDIA GeForce GTX 950 2GB",
     "ramGB": 4,
-    "note": ""
+    "note": "Mốc tham chiếu; khả năng mã hóa video phụ thuộc encoder và độ phân giải."
   }
 ]
